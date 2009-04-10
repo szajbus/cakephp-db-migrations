@@ -409,12 +409,8 @@ class MigrateShell extends Shell
         $tempModel = new Model(false, $tableName, $this->dataSource);
         $modelFields = $tempModel->_schema;
         
-        if (!array_key_exists('created', $modelFields) && !array_key_exists('modified', $modelFields)) {
-            $tableSchema['no_dates'] = '';
-        } elseif (!array_key_exists('created', $modelFields) || !array_key_exists('modified', $modelFields)) {
-            $tableSchema[] = array_key_exists('created', $modelFields) ? 'modified' : 'created';
-            $tableSchema['no_dates'] = '';
-        }
+        $tableSchema['created'] = array_key_exists('created', $modelFields);
+        $tableSchema['modified'] = array_key_exists('modified', $modelFields);
         
         foreach ($modelFields as $key=>$item) {
             if ($key != 'id' AND $key != 'created' AND $key != 'modified') {
