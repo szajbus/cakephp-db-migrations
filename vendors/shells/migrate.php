@@ -706,6 +706,10 @@ class MigrateShell extends Shell
         if (!is_array($props)) $props = array($props);
 
         foreach ($props as $key => $prop) {
+            if (in_array($key, array('is_null', 'not_null'))) {
+                $prop = $key;
+                $key = 0;
+            }
             if (is_numeric($key)) {
                 switch ($prop) {
                     case is_numeric($prop):
