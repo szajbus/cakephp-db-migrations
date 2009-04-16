@@ -422,6 +422,9 @@ class MigrateShell extends Shell
                 } else {
                     $tableSchema[$key]['not_null'] = '';
                 }
+                if (isset($item['key'])) {
+                    $tableSchema[$key][$item['key']] = '';
+                }
             }
         }
         
