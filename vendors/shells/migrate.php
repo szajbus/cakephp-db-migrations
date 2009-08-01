@@ -17,7 +17,7 @@
 */
 
 App::import('Core', array('file', 'folder'));
-App::import('Vendor', 'Yaml');
+App::import('Vendor', 'Migrations.Yaml');
 
 class MigrateShell extends Shell
 {
